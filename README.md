@@ -2,13 +2,13 @@
 
 ## 编辑
 
-这里是LvyJS开发工具的文档内容编辑源码，
+这里是 LvyJS 开发工具的文档内容编辑源码，
 
 该文档任何人可编辑，提交后会进入自动部署，并更新网页。
 
 > 如果文档中发现错误，或提交文档修改，或丰富本站文档，可点击编辑按钮
 
-[阅读文档 https://LvyJS.github.io/docs/](https://LvyJS.github.io/docs/)
+[阅读文档 https://lvyjs.github.io/docs/](https://lvyjs.github.io/docs/)
 
 ## 注意
 
