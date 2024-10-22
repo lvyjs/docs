@@ -4,7 +4,7 @@ import type * as Preset from '@docusaurus/preset-classic'
 
 const config: Config = {
   title: 'LvyJS',
-  tagline: '基于 tsx、esbuld、rollup 所构建的，为 nodejs 应用设计的打包工具',
+  tagline: '基于 tsx、esbuld、rollup 所构建的，为 nodejs 应用设计的打包工具。',
   // favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
