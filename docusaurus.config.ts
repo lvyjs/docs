@@ -32,7 +32,7 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          editUrl: 'https://github.com/lvyjs/docs'
+          editUrl: 'https://github.com/lvyjs/docs/blob/main'
         },
         theme: {
           customCss: './src/css/custom.css'
@@ -110,29 +110,17 @@ const config: Config = {
               href: 'https://github.com/yunzaijs/core'
             },
             {
-              label: 'chat-space',
-              href: 'https://github.com/lemonade-lab/chat-space'
-            },
-            {
               label: 'TRSS-Yunzai V3',
               href: 'https://github.com/TimeRainStarSky/Yunzai'
             },
             {
               label: 'Miao-Yunzai V3',
               href: 'https://github.com/yoimiya-kokomi/Miao-Yunzai/tree/master'
-            },
-            {
-              label: 'Yunzai-Bot V3',
-              href: 'https://gitee.com/Le-niao/Yunzai-Bot/tree/main'
-            },
-            {
-              label: 'Yunzai-Bot V2',
-              href: 'https://gitee.com/Le-niao/Yunzai-Bot/tree/master'
             }
           ]
         }
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} LvyJS. The MIT License (MIT)`
+      copyright: `Released under the MIT License. (dev) <br/> Copyright © 2024-present LvyJS Contributors`
     },
     prism: {
       theme: prismThemes.github,
