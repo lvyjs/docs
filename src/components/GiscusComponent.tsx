@@ -3,14 +3,17 @@ import Giscus from '@giscus/react'
 import { useColorMode } from '@docusaurus/theme-common'
 export default function GiscusComponent() {
   const { colorMode } = useColorMode()
+  const repo = 'lvyjs/docs'
+  const repoId = 'R_kgDONEDLcQ'
+  const categoryId = 'DIC_kwDONEDLcc4CjpvT'
   return (
     <Giscus
-      repo="yunzaijs/docs"
-      repoId="R_kgDOMHTm2A"
+      repo={repo}
+      repoId={repoId}
       category="General"
-      categoryId="DIC_kwDOMHTm2M4CjMGM"
+      categoryId={categoryId}
       mapping="url"
-      term="Welcome to YunzaiJS!"
+      term="Welcome!"
       strict="0"
       reactionsEnabled="1"
       emitMetadata="1"
