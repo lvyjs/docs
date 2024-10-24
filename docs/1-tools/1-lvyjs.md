@@ -8,7 +8,7 @@ sidebar_position: 1
 
 :::tip lvyjs
 
-基于 tsx、esbuld、rollup 所构建的，为 nodejs 应用设计的开发工具。
+为 nodejs 应用而设计的打包构建工具
 
 :::
 

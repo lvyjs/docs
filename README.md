@@ -8,7 +8,7 @@
 
 > 如果文档中发现错误，或提交文档修改，或丰富本站文档，可点击编辑按钮
 
-[阅读文档 https://lvyjs.github.io/docs/](https://lvyjs.github.io/docs/)
+[阅读文档 https://lvyjs.dev/](https://lvyjs.dev/)
 
 ## 注意
 

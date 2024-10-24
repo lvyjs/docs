@@ -8,7 +8,7 @@ sidebar_position: 4
 
 ```ts
 /**
- * feature：新功能
+ * feat：新功能
  * update：更新某功能
  * fix：修补某功能
  * refactor：重构某个功能
@@ -64,14 +64,4 @@ const Arr = []
 const Obj = {}
 
 // 不推荐new
-```
-
-## 模块风格
-
-```ts
-import yzMYS from '@yunzaijs/mys'
-```
-
-```ts
-import yzxiuxian from 'yz-xiuxian'
 ```

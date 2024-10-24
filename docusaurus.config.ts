@@ -4,14 +4,14 @@ import type * as Preset from '@docusaurus/preset-classic'
 
 const config: Config = {
   title: 'LvyJS',
-  tagline: '基于 tsx、esbuld、rollup 所构建的，为 nodejs 应用设计的打包工具。',
+  tagline: '为 nodejs 应用而设计的打包构建工具',
   // favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://lvyjs.github.io',
+  url: 'https://lvyjs.dev',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/docs/',
+  baseUrl: '/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -32,7 +32,7 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          editUrl: 'https://github.com/lvyjs/docs/tree/main/'
+          editUrl: 'https://github.com/lvyjs/docs'
         },
         theme: {
           customCss: './src/css/custom.css'
@@ -64,7 +64,7 @@ const config: Config = {
         },
         {
           position: 'right',
-          href: 'https://github.com/lvyjs/core/tree/main/packages/create-lvyjs/README.md',
+          href: 'https://github.com/lvyjs/core/tree/main/packages/create-lvyjs/bin/template',
           label: '模板'
         },
         {
@@ -85,7 +85,7 @@ const config: Config = {
           items: [
             {
               label: '简介',
-              to: '/docs/docs/intro'
+              to: '/docs/intro'
             }
           ]
         },
@@ -94,7 +94,7 @@ const config: Config = {
           items: [
             {
               label: '问题反馈',
-              href: 'https://qm.qq.com/q/aZYMNqUQc'
+              href: 'https://qm.qq.com/q/Hl4bOXK1em'
             }
           ]
         },
@@ -132,7 +132,7 @@ const config: Config = {
           ]
         }
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} LvyJS.`
+      copyright: `Copyright © ${new Date().getFullYear()} LvyJS. The MIT License (MIT)`
     },
     prism: {
       theme: prismThemes.github,

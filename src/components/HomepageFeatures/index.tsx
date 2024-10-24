@@ -12,7 +12,7 @@ const FeatureList: FeatureItem[] = [
   {
     title: 'Easy to Use',
     Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
-    description: <>Node.js 环境，源码安装</>
+    description: <>专为Nodejs开发而设计</>
   },
   {
     title: 'Support Plugins',
@@ -22,7 +22,7 @@ const FeatureList: FeatureItem[] = [
   {
     title: 'Powered by React',
     Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
-    description: <>React 技术栈，使用 jsxp 增强图片开发</>
+    description: <>使用 React 增强图片开发</>
   }
 ]
 

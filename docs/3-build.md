@@ -2,13 +2,21 @@
 sidebar_position: 3
 ---
 
-# 模版开发
+# 创建模板
 
 :::tip 提示
 
 使用脚手架快速创建模版项目。
 
 :::
+
+| Project        | Status                    | Description |
+| -------------- | ------------------------- | ----------- |
+| [create-lvyjs] | [![c-lvyjs-s]][c-lvyjs-p] | 打包工具    |
+
+[create-lvyjs]: https://github.com/lvyjs/core/tree/main/packages/create-lvyjs
+[c-lvyjs-s]: https://img.shields.io/npm/v/create-lvyjs.svg
+[c-lvyjs-p]: https://www.npmjs.com/package/create-lvyjs
 
 ## 创建项目
 
@@ -64,8 +72,8 @@ yarn install
 - [lvyjs 文档](./tools/lvyjs)
 - [JSXP 文档](./tools/jsxp)
 - [Alemonjs 开发文档](https://alemonjs.com/)
-- [Yunzaijs 开发文档](https://yunzaijs.github.io/docs/)
+- [Yunzaijs 开发文档](https://yunzaijs.com/)
 
-## 源码
+## 模板源码
 
-[create-yunzai](https://github.com/lvyjs/core/tree/main/packages/create-lvyjs/bin/template)
+[create-lvyjs](https://github.com/lvyjs/core/tree/main/packages/create-lvyjs/bin/template)
