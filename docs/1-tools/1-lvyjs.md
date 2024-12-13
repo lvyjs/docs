@@ -52,10 +52,8 @@ import { dirname, join } from 'path'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 export default defineConfig({
-  build: {
-    alias: {
-      entries: [{ find: '@src', replacement: join(__dirname, 'src') }]
-    }
+  alias: {
+    entries: [{ find: '@src', replacement: join(__dirname, 'src') }]
   }
 })
 ```
@@ -112,11 +110,13 @@ import { dirname, join } from 'path'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 export default defineConfig({
-  build: {
-    alias: {
-      // 编译时将 @src 别名替换为 src 保证路径正确
-      entries: [{ find: '@src', replacement: join(__dirname, 'src') }]
-    }
+  alias: {
+    // 编译时将 @src 别名替换为 src 保证路径正确
+    entries: [{ find: '@src', replacement: join(__dirname, 'src') }]
+  },
+  //过滤得到指定格式的文件识别之为静态资源
+  assets: {
+    filter: /\.(png|jpg|jpeg|gif|svg|webp|ico)$/
   }
 })
 ```
@@ -147,10 +147,10 @@ import { dirname, join } from 'path'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 export default defineConfig({
+  alias: {
+    entries: [{ find: '@src', replacement: join(__dirname, 'src') }]
+  },
   build: {
-    alias: {
-      entries: [{ find: '@src', replacement: join(__dirname, 'src') }]
-    },
     typescript: {
       // 打包时移除注释，如果需要其他配置，参考typeScript库的 CompilerOptions
       removeComments: true
@@ -175,10 +175,10 @@ import { terser } from 'rollup-plugin-terser'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 export default defineConfig({
+  alias: {
+    entries: [{ find: '@src', replacement: join(__dirname, 'src') }]
+  },
   build: {
-    alias: {
-      entries: [{ find: '@src', replacement: join(__dirname, 'src') }]
-    },
     typescript: {
       removeComments: true
     },

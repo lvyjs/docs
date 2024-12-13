@@ -92,20 +92,23 @@ import { dirname, join } from 'path'
 import { createServer as useJSXP } from 'jsxp'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
+
+const useJSXP = async () => {
+  if (process.argv.includes('--view')) {
+    const { createServer } = await import('jsxp')
+    createServer()
+  }
+}
+
 export default defineConfig({
   plugins: [
-    {
-      name: 'lvy-view-app',
-      useApp: () => {
-        // 启动jsxp本地调试
-        if (process.argv.includes('--view')) useJSXP()
-      }
+    () => {
+      // 启动jsxp本地调试
+      if (process.argv.includes('--view')) return () => useJSXP()
     }
   ],
-  build: {
-    alias: {
-      entries: [{ find: '@src', replacement: join(__dirname, 'src') }]
-    }
+  alias: {
+    entries: [{ find: '@src', replacement: join(__dirname, 'src') }]
   }
 })
 ```
