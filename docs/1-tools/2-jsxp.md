@@ -62,22 +62,16 @@ export default () => {
 ```ts title="src/image.tsx"
 //示例 调用jsxp默认截图渲染方法，当然也可以自定义并拓展截图方法
 import React from 'react'
-import {  render, ObtainProps } from 'jsxp'
+import { renders, ObtainProps } from 'jsxp'
 import Hello from './hello.tsx'
-export const pictureRender = (uid: number, Props: ObtainProps<typeof Hello>) => {
-  // 生成 html 地址 或 html字符串
-  return render({
-    // html/hello/uid.html
-    path: 'hello',
-    name: `${uid}.html`,
-    component: <Hello {...Props} />
-  })
-}
+export const pictureRender = renders({
+  Hello
+})
 ```
 
 ```ts title="src/index.ts"
 import { pictureRender } from './image.tsx'
-const img: Buffer | false = await pictureRender(123456, {})
+const img: Buffer | false = await pictureRender(Hello, {})
 if (img) {
   // 可fs保存到本地
 }
@@ -87,29 +81,9 @@ if (img) {
 
 ```ts title="lvy.config.ts"
 import { defineConfig } from 'lvyjs'
-import { fileURLToPath } from 'url'
-import { dirname, join } from 'path'
-import { createServer as useJSXP } from 'jsxp'
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = dirname(__filename)
-
-const useJSXP = async () => {
-  if (process.argv.includes('--view')) {
-    const { createServer } = await import('jsxp')
-    createServer()
-  }
-}
-
+const jsxp = () => import('jsxp').then(res => res.createServer())
 export default defineConfig({
-  plugins: [
-    () => {
-      // 启动jsxp本地调试
-      if (process.argv.includes('--view')) return () => useJSXP()
-    }
-  ],
-  alias: {
-    entries: [{ find: '@src', replacement: join(__dirname, 'src') }]
-  }
+  plugins: [() => jsxp]
 })
 ```
 
@@ -170,11 +144,24 @@ export const Link = () => {
       <head>
         <LinkStyleSheet src={css_url} />
       </head>
-      <body>
-        <LinkESM src={require('../../resources/js/hello.js')} />
-      </body>
     </html>
   )
+}
+```
+
+#### css压缩
+
+```sh
+yarn add cssnano
+```
+
+```js title="postcss.config.cjs"
+module.exports = {
+  plugins: {
+    cssnano: {
+      preset: 'default'
+    }
+  }
 }
 ```
 
@@ -209,49 +196,32 @@ export default {
 }
 ```
 
-##### 使用lvyjs:
-
-```tsx
-import React from 'react'
-import { LinkStyleSheet } from 'jsxp'
-import css_output from './input.css'
-export default (_ = {}) => {
-  return (
-    <html>
-      <head>
-        <LinkStyleSheet src={css_output} />
-      </head>
-      <body>
-        <div className="show-image p-8 w-full "></div>
-      </body>
-    </html>
-  )
-}
-```
-
-### CSS预处理器
-
 ```js title="postcss.config.cjs"
 module.exports = {
   plugins: {
-    // 允许使用import导入css文件
-    'postcss-import': {},
-    // 允许使用嵌套语法
-    'postcss-simple-vars': {},
-    // nested
-    'postcss-nested': {},
     // tailwindcss
-    'tailwindcss': {},
-    // 增加浏览器前缀
-    'autoprefixer': {},
-    // 内联url资源
-    'postcss-url': {
-      url: 'inline'
-    },
-    // 压缩css
-    'cssnano': {
-      preset: 'default'
-    }
+    tailwindcss: {}
   }
+}
+```
+
+### 预处理
+
+```sh
+yarn add sass less
+```
+
+```tsx title="./link.tsx"
+import { createRequire, LinkStyleSheet, LinkESM } from 'jsxp'
+import css_url from '../../resources/css/hello.scss'
+const require = createRequire(import.meta.url)
+export const Link = () => {
+  return (
+    <html>
+      <head>
+        <LinkStyleSheet src={css_url} />
+      </head>
+    </html>
+  )
 }
 ```

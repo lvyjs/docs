@@ -32,12 +32,6 @@ npm install lvyjs -D
 
 ```json title="./tsconfig.json"
 {
-  "compilerOptions": {
-    "baseUrl": "./",
-    "paths": {
-      "@src/*": ["src/*"]
-    }
-  },
   "include": ["src/**/*"],
   "extends": "lvyjs/tsconfig.json"
 }
@@ -49,13 +43,18 @@ npm install lvyjs -D
 import { defineConfig } from 'lvyjs'
 import { fileURLToPath } from 'url'
 import { dirname, join } from 'path'
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = dirname(__filename)
+const __dirname = dirname(fileURLToPath(import.meta.url))
+const App = () => import('src/index')
 export default defineConfig({
-  alias: {
-    entries: [{ find: '@src', replacement: join(__dirname, 'src') }]
-  }
+  plugin: [() => App]
 })
+```
+
+```ts title="./src/index.ts"
+const main = () => {
+  console.log('main dev')
+}
+main()
 ```
 
 ```sh
@@ -63,6 +62,15 @@ npx lvy dev
 ```
 
 ## 非模块文件
+
+```ts title="./lvy.config.ts"
+import { defineConfig } from 'lvyjs'
+export default defineConfig({
+  assets: {
+    filter: /\.(png|jpg|jpeg|gif|svg|webp|ico)$/
+  }
+})
+```
 
 ### 类型
 
@@ -89,36 +97,24 @@ const data = readFileSync(img_logo, 'utf-8')
 
 ### 配置
 
+```ts title="./lvy.config.ts"
+import { defineConfig } from 'lvyjs'
+export default defineConfig({
+  alias: {
+    entries: [{ find: '@src', replacement: join(__dirname, 'src') }]
+  }
+})
+```
+
 ```json title="./tsconfig.json"
 {
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      // 设置别名，方便路径引用
       "@src/*": ["src/*"]
     }
-  },
-  "include": ["src/**/*"],
-  "extends": "lvyjs/tsconfig.json"
-}
-```
-
-```ts title="./lvy.config.ts"
-import { defineConfig } from 'lvyjs'
-import { fileURLToPath } from 'url'
-import { dirname, join } from 'path'
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = dirname(__filename)
-export default defineConfig({
-  alias: {
-    // 编译时将 @src 别名替换为 src 保证路径正确
-    entries: [{ find: '@src', replacement: join(__dirname, 'src') }]
-  },
-  //过滤得到指定格式的文件识别之为静态资源
-  assets: {
-    filter: /\.(png|jpg|jpeg|gif|svg|webp|ico)$/
   }
-})
+}
 ```
 
 ### 使用
@@ -130,14 +126,6 @@ import img_logo from '@src/asstes/img/logo.png'
 const data = readFileSync(img_logo, 'utf-8')
 ```
 
-### 打包
-
-> 对 src 目录打包并输出到 lib 目录
-
-```sh
-npx lvy build
-```
-
 ## 移除注释
 
 ```ts title="./lvy.config.ts"
@@ -147,12 +135,10 @@ import { dirname, join } from 'path'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 export default defineConfig({
-  alias: {
-    entries: [{ find: '@src', replacement: join(__dirname, 'src') }]
-  },
   build: {
+    // @rollup/plugin-typescript options
     typescript: {
-      // 打包时移除注释，如果需要其他配置，参考typeScript库的 CompilerOptions
+      // 打包时移除注释
       removeComments: true
     }
   }
@@ -167,22 +153,38 @@ yarn add rollup-plugin-terser -D
 
 ```ts title="./lvy.config.ts"
 import { defineConfig } from 'lvyjs'
-import { fileURLToPath } from 'url'
-import { dirname, join } from 'path'
-// 导入压缩插件
-import { terser } from 'rollup-plugin-terser'
-
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = dirname(__filename)
+import { terser } from 'rollup-plugin-terser' // terser
 export default defineConfig({
-  alias: {
-    entries: [{ find: '@src', replacement: join(__dirname, 'src') }]
-  },
   build: {
-    typescript: {
-      removeComments: true
-    },
-    plugins: [terser()] // 使用压缩插件压缩代码
+    // rollup options
+    RollupOptions: {
+      // 使用压缩插件压缩代码
+      plugins: [terser()]
+    }
   }
 })
+```
+
+## 打包
+
+```ts title="./lvy.config.ts"
+import { defineConfig } from 'lvyjs'
+import { terser } from 'rollup-plugin-terser' // terser
+export default defineConfig({
+  build: {
+    // rollup outputOptions
+    OutputOptions: {
+      input: 'src',
+      output: 'lib',
+      intro: `/**  https://lvyjs.dev script start **/`,
+      outro: ` /**  https://lvyjs.dev script end  **/ `
+    }
+  }
+})
+```
+
+> 对 src 目录打包并输出到 lib 目录
+
+```sh
+npx lvy build
 ```
