@@ -21,7 +21,7 @@ sidebar_position: 3
 ## 创建项目
 
 ```bash
-npm create lvyjs@latest -y
+npm create lvyjs@latest -y --registry=https://registry.npmmirror.com
 ```
 
 ```bash title="选择模版"
@@ -31,12 +31,6 @@ npm create lvyjs@latest -y
   jsxp
   pure
 ```
-
-> 超时连接可尝试使用镜像
->
-> ```sh
-> npm create --registry=https://registry.npmmirror.com lvyjs@latest -y
-> ```
 
 ## 进入项目
 
@@ -72,7 +66,6 @@ yarn install
 - [lvyjs 文档](./tools/lvyjs)
 - [JSXP 文档](./tools/jsxp)
 - [Alemonjs 开发文档](https://alemonjs.com/)
-- [Yunzaijs 开发文档](https://yunzaijs.com/)
 
 ## 模板源码
 

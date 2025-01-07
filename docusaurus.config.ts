@@ -94,7 +94,7 @@ const config: Config = {
           items: [
             {
               label: '问题反馈',
-              href: 'https://qm.qq.com/q/Hl4bOXK1em'
+              href: 'https://qm.qq.com/q/tpMYpkLXJ8'
             }
           ]
         },
@@ -104,18 +104,6 @@ const config: Config = {
             {
               label: 'alemonjs',
               href: 'https://github.com/lemonade-lab/alemonjs'
-            },
-            {
-              label: 'yunzaijs',
-              href: 'https://github.com/yunzaijs/core'
-            },
-            {
-              label: 'TRSS-Yunzai V3',
-              href: 'https://github.com/TimeRainStarSky/Yunzai'
-            },
-            {
-              label: 'Miao-Yunzai V3',
-              href: 'https://github.com/yoimiya-kokomi/Miao-Yunzai/tree/master'
             }
           ]
         }
