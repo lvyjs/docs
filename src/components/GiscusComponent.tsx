@@ -3,7 +3,7 @@ import Giscus from '@giscus/react'
 import { useColorMode } from '@docusaurus/theme-common'
 export default function GiscusComponent() {
   const { colorMode } = useColorMode()
-  const repo = 'lvyjs/docs'
+  const repo = 'lemonade-lab/lvyjs-docs'
   const repoId = 'R_kgDONEDLcQ'
   const categoryId = 'DIC_kwDONEDLcc4CjpvT'
   return (

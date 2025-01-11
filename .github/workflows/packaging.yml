@@ -47,5 +47,5 @@ jobs:
           git config --local user.name "ningmengchongshui"
           git add -A
           git commit -m "自动打包 - ${{ env.BEIJING_TIME }}"
-          git remote add github https://lvyjs:${{ secrets.GH_TOKEN }}@github.com/lvyjs/docs.git
+          git remote add github https://lvyjs:${{ secrets.GH_TOKEN }}@github.com/lemonade-lab/lvyjs-docs.git
           git push github HEAD:docs -f

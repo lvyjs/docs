@@ -32,7 +32,7 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          editUrl: 'https://github.com/lvyjs/docs/blob/main'
+          editUrl: 'https://github.com/lemonade-lab/lvyjs-docs/blob/main'
         },
         theme: {
           customCss: './src/css/custom.css'
@@ -60,16 +60,16 @@ const config: Config = {
         {
           position: 'left',
           label: '编辑',
-          href: 'https://github.com/lvyjs/docs/blob/main/docs/intro.md'
+          href: 'https://github.com/lemonade-lab/lvyjs-docs/blob/main/docs/1-intro.md'
         },
         {
           position: 'right',
-          href: 'https://github.com/lvyjs/core/tree/main/packages/create-lvyjs/bin/template',
+          href: 'https://github.com/lemonade-lab/lvyjs/tree/main/packages/create-lvyjs/template',
           label: '模板'
         },
         {
           position: 'right',
-          href: 'https://github.com/lvyjs/core',
+          href: 'https://github.com/lemonade-lab/lvyjs',
           label: '源码'
         }
       ]

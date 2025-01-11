@@ -14,7 +14,7 @@ sidebar_position: 3
 | -------------- | ------------------------- | ----------- |
 | [create-lvyjs] | [![c-lvyjs-s]][c-lvyjs-p] | 打包工具    |
 
-[create-lvyjs]: https://github.com/lvyjs/core/tree/main/packages/create-lvyjs
+[create-lvyjs]: https://github.com/lemonade-lab/lvyjs/tree/main/packages/create-lvyjs
 [c-lvyjs-s]: https://img.shields.io/npm/v/create-lvyjs.svg
 [c-lvyjs-p]: https://www.npmjs.com/package/create-lvyjs
 
@@ -69,4 +69,4 @@ yarn install
 
 ## 模板源码
 
-[create-lvyjs](https://github.com/lvyjs/core/tree/main/packages/create-lvyjs/bin/template)
+[create-lvyjs](https://github.com/lemonade-lab/lvyjs/tree/main/packages/create-lvyjs/bin/template)

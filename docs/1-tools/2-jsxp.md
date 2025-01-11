@@ -8,7 +8,7 @@ sidebar_position: 2
 
 :::tip jsxp
 
-[jsxp](https://github.com/lvyjs/core/tree/main/packages/jsxp) 是一个可以在 tsx 环境中,使用 puppeteer 对 React （tsx） 组件进行截图的库
+[jsxp](https://github.com/lemonade-lab/lvyjs/tree/main/packages/jsxp) 是一个可以在 tsx 环境中,使用 puppeteer 对 React （tsx） 组件进行截图的库
 
 :::
 
@@ -16,7 +16,7 @@ sidebar_position: 2
 | ------- | ------------------- | ----------- |
 | [jsxp]  | [![jsxp-s]][jsxp-p] | 打包工具    |
 
-[jsxp]: https://github.com/lvyjs/core/tree/main/packages/jsxp
+[jsxp]: https://github.com/lemonade-lab/lvyjs/tree/main/packages/jsxp
 [jsxp-s]: https://img.shields.io/npm/v/jsxp.svg
 [jsxp-p]: https://www.npmjs.com/package/jsxp
 
