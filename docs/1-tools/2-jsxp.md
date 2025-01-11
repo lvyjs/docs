@@ -35,14 +35,6 @@ yarn add jsxp -W
 module.exports = require('jsxp/.puppeteerrc')
 ```
 
-```json title="tsconfig.json"
-{
-  "include": ["src/**/*"],
-  "extends": ["lvyjs/tsconfig.json"]
-  // 未了解 lvyjs 请阅读上一章节
-}
-```
-
 ### 使用示例
 
 ```tsx title="src/hello.tsx"
@@ -79,28 +71,19 @@ if (img) {
 
 ### 本地调试
 
-```ts title="lvy.config.ts"
-import { defineConfig } from 'lvyjs'
-const jsxp = () => import('jsxp').then(res => res.createServer())
-export default defineConfig({
-  plugins: [() => jsxp]
-})
+```ts
+import('jsxp').then(res => res.createServer())
 ```
 
 ```tsx title="jsxp.config.tsx"
 import React from 'react'
-//import Music from './music.js'
-import Hello from './hello.tsx'
+import Hello from './hello'
 import { defineConfig } from 'jsxp'
 export default defineConfig({
   routes: {
     '/hello': {
       component: <Hello data={(123456, {})} />
     }
-    // 本地调试时，可以添加更多本地组件进行调试
-    /* '/music': {
-      component: <Music />
-    } */
   }
 })
 ```
@@ -115,17 +98,13 @@ npx lvy dev --view
 import React from 'react'
 import { BackgroundImage } from 'jsxp'
 import img_url from './resources/example.pn'
-import img_svg from './resources/example.svg'
-import img_example from './resources/example.png'
 export default function Word() {
   return (
     <html>
       <body>
-        <BackgroundImage url={img_url} size="100% 100%">
-          我有了一个背景图
+        <BackgroundImage src={img_url} size="100% 100%">
+          <div>我有了一个背景图</div>
         </BackgroundImage>
-        <img src={img_svg} />
-        <img src={img_example} />
       </body>
     </html>
   )
@@ -135,93 +114,29 @@ export default function Word() {
 ### 样式资源
 
 ```tsx title="./link.tsx"
-import { createRequire, LinkStyleSheet, LinkESM } from 'jsxp'
-import css_url from '../../resources/css/hello.css'
-const require = createRequire(import.meta.url)
-export const Link = () => {
+import { LinkStyleSheet, LinkESM } from 'jsxp'
+export default function Word() {
   return (
     <html>
       <head>
-        <LinkStyleSheet src={css_url} />
+        {
+          // 绝对路径
+        }
+        <LinkStyleSheet src="/cwd/resources/css/hello.css" />
       </head>
+      <body></body>
     </html>
   )
 }
 ```
 
-#### css压缩
+### 截图类
 
-```sh
-yarn add cssnano
-```
-
-```js title="postcss.config.cjs"
-module.exports = {
-  plugins: {
-    cssnano: {
-      preset: 'default'
-    }
-  }
-}
-```
-
-#### tailwindcss
-
-```sh
-yarn add tailwind -W
-```
-
-- `./input.css`
-
-```css
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-* {
-  margin: 0;
-  padding: 0;
-  user-select: none;
-}
-```
-
-- `./tailwind.config.js`
-
-```js
-/**
- * @type {import('tailwindcss').Config}
- */
-export default {
-  content: ['src/**/*.{jsx.tsx.html}']
-}
-```
-
-```js title="postcss.config.cjs"
-module.exports = {
-  plugins: {
-    // tailwindcss
-    tailwindcss: {}
-  }
-}
-```
-
-### 预处理
-
-```sh
-yarn add sass less
-```
-
-```tsx title="./link.tsx"
-import { createRequire, LinkStyleSheet, LinkESM } from 'jsxp'
-import css_url from '../../resources/css/hello.scss'
-const require = createRequire(import.meta.url)
-export const Link = () => {
-  return (
-    <html>
-      <head>
-        <LinkStyleSheet src={css_url} />
-      </head>
-    </html>
-  )
-}
+```ts
+import { picture } from 'jsxp'
+const pic = await picture()
+// 绝对路径（同时内部的资源也必须是绝对路径）
+const dir = '/cwd/data/image.html'
+// 截图指定html
+const img = await pic.puppeteer.render(dir)
 ```
